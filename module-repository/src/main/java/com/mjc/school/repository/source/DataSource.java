@@ -14,13 +14,12 @@ import java.util.List;
 public class DataSource {
     private final List<AuthorModel> authorModels;
     private final List<NewsModel> newsModels;
-    private static final String PATH_AUTHOR = "author.txt";
-    private static final String PATH_CONTENT = "content.txt";
-    private static final String PATH_NEWS = "news.txt";
+    private static final String PATH_AUTHOR = "authors";
+    private static final String PATH_CONTENT = "content";
+    private static final String PATH_NEWS = "news";
     private static final int DATA_SOURCE_SIZE = 20;
 
-    @Autowired
-    private DataSource() {
+    public DataSource() {
         this.authorModels = initAuthorModels();
         this.newsModels = initNewsModels();
     }

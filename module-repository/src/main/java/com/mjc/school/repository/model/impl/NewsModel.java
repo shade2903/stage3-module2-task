@@ -1,12 +1,13 @@
 package com.mjc.school.repository.model.impl;
 
 import com.mjc.school.repository.model.BaseEntity;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Component("news")
+
 public class NewsModel implements BaseEntity<Long> {
     private Long id;
     private String title;
@@ -28,6 +29,7 @@ public class NewsModel implements BaseEntity<Long> {
         this.lastUpdatedDate = lastUpdatedDate;
         this.authorId = authorId;
     }
+
 
     @Override
     public Long getId() {
