@@ -1,38 +1,29 @@
-package com.mjc.school.repository.model.impl;
-
-import com.mjc.school.repository.model.BaseEntity;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+package com.mjc.school.service.dto;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Scope("prototype")
-@Component
-public class AuthorModel implements BaseEntity<Long> {
-
+public class AuthorDtoResponse {
     private Long id;
     private String name;
+
     private LocalDateTime createDate;
+
     private LocalDateTime lastUpdateDate;
 
-    public AuthorModel(Long id, String name, LocalDateTime createDate, LocalDateTime lastUpdateDate) {
+    public AuthorDtoResponse(Long id, String name, LocalDateTime createDate, LocalDateTime lastUpdateDate) {
         this.id = id;
         this.name = name;
         this.createDate = createDate;
         this.lastUpdateDate = lastUpdateDate;
     }
 
-
-    @Override
     public Long getId() {
-        return this.id;
+        return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
-
     }
 
     public String getName() {
@@ -62,8 +53,7 @@ public class AuthorModel implements BaseEntity<Long> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AuthorModel that = (AuthorModel) o;
+        if (!(o instanceof AuthorDtoResponse that)) return false;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(createDate, that.createDate) && Objects.equals(lastUpdateDate, that.lastUpdateDate);
     }
 
@@ -72,4 +62,13 @@ public class AuthorModel implements BaseEntity<Long> {
         return Objects.hash(id, name, createDate, lastUpdateDate);
     }
 
+    @Override
+    public String toString() {
+        return "AuthorDtoResponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createDate=" + createDate +
+                ", lastUpdateDate=" + lastUpdateDate +
+                '}';
+    }
 }
