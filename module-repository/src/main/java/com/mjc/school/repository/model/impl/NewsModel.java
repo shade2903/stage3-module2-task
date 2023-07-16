@@ -1,4 +1,4 @@
-package com.mjc.school.repository.model;
+package com.mjc.school.repository.model.impl;
 
 import com.mjc.school.repository.model.BaseEntity;
 import org.springframework.context.annotation.Scope;
