@@ -20,7 +20,7 @@ public class RepositoryAspect {
         this.dataSource = dataSource;
     }
 
-    @Before("@annotation(com.mjc.school.repository.anatation.OnDeleteCascade) && args(id)")
+    @Before("@annotation(com.mjc.school.repository.annotation.OnDeleteCascade) && args(id)")
     public void CascadeOnDelete(Long id){
         List<NewsModel> modelList = dataSource.getAllNews();
         List<NewsModel> removeList = modelList.stream()
@@ -28,20 +28,13 @@ public class RepositoryAspect {
         modelList.removeAll(removeList);
     }
 
-    @Before("@annotation(com.mjc.school.repository.anatation.OnDeleteSetNullForeignKey) && args(id)")
+    @Before("@annotation(com.mjc.school.repository.annotation.OnDeleteSetNullForeignKey) && args(id)")
     public void setNullForeignKeyOnDelete(Long id){
         List<NewsModel> modelList = dataSource.getAllNews();
-        List<NewsModel> removeList = modelList.stream()
-                .filter(e -> Objects.equals(e.getAuthorId(),id)).toList();
-        if(removeList != null){
-            removeList.stream().map(e -> new NewsModel(
-                    e.getId(),
-                    e.getTitle(),
-                    e.getContent(),
-                    e.getCreateDate(),
-                    e.getLastUpdateDate(),
-                    null)).collect(Collectors.toList());
+        for(NewsModel news : modelList){
+            if(news.getAuthorId().equals(id)){
+                news.setAuthorId(null);
+            }
         }
-        modelList.removeAll(removeList);
     }
 }

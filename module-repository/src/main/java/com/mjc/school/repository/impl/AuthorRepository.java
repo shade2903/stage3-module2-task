@@ -2,6 +2,7 @@ package com.mjc.school.repository.impl;
 
 
 import com.mjc.school.repository.BaseRepository;
+import com.mjc.school.repository.annotation.OnDeleteCascade;
 import com.mjc.school.repository.model.impl.AuthorModel;
 import com.mjc.school.repository.source.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,8 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
         return null;
     }
 
+
+    @OnDeleteCascade
     @Override
     public boolean deleteById(Long id) {
         List<AuthorModel> removeList = new ArrayList<>();

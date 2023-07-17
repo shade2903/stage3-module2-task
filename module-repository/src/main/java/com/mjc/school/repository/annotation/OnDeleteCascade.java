@@ -1,4 +1,4 @@
-package com.mjc.school.repository.anatation;
+package com.mjc.school.repository.annotation;
 
 
 import java.lang.annotation.*;
