@@ -1,8 +1,11 @@
 package com.mjc.school.service.dto;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Component
 public class NewsDtoRequest {
     private Long id;
     private String title;
@@ -14,6 +17,9 @@ public class NewsDtoRequest {
         this.title = title;
         this.content = content;
         this.authorId = authorId;
+    }
+
+    public NewsDtoRequest() {
     }
 
     public Long getId() {

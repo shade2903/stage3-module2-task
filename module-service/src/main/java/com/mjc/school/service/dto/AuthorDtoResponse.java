@@ -1,8 +1,11 @@
 package com.mjc.school.service.dto;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Component
 public class AuthorDtoResponse {
     private Long id;
     private String name;
@@ -16,6 +19,9 @@ public class AuthorDtoResponse {
         this.name = name;
         this.createDate = createDate;
         this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public AuthorDtoResponse() {
     }
 
     public Long getId() {
