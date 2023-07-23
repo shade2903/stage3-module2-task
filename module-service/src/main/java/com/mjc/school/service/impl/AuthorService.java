@@ -28,7 +28,7 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
 
     @Override
     public List<AuthorDtoResponse> readAll() {
-        return authorRepository.readAll().stream().map(AuthorMapper.INSTANCE::AuthorToDtoResponse).toList();
+        return authorRepository.readAll().stream().map(AuthorMapper.INSTANCE::authorToDtoResponse).toList();
 
     }
 
@@ -37,7 +37,7 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     public AuthorDtoResponse readById(Long id) {
         Optional<AuthorModel> authorModel = authorRepository.readById(id);
         if (authorModel.isPresent()) {
-            return AuthorMapper.INSTANCE.AuthorToDtoResponse(authorModel.get());
+            return AuthorMapper.INSTANCE.authorToDtoResponse(authorModel.get());
         }
         throw new NotFoundException(
                 String.format(ErrorCode.NOT_FOUND_DATA.getMessage(), Constants.AUTHOR, id));
@@ -46,16 +46,16 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @Override
     @ValidateAuthorParam
     public AuthorDtoResponse create(AuthorDtoRequest createRequest) {
-        return AuthorMapper.INSTANCE.AuthorToDtoResponse(
-                authorRepository.create(AuthorMapper.INSTANCE.AuthorFromDtoRequest(createRequest)));
+        return AuthorMapper.INSTANCE.authorToDtoResponse(
+                authorRepository.create(AuthorMapper.INSTANCE.authorFromDtoRequest(createRequest)));
     }
 
     @Override
     @ValidateAuthorParam
     public AuthorDtoResponse update(AuthorDtoRequest updateRequest) {
         if(authorRepository.existById(updateRequest.getId())){
-            AuthorModel updateAuthor = authorRepository.update(AuthorMapper.INSTANCE.AuthorFromDtoRequest(updateRequest));
-            return AuthorMapper.INSTANCE.AuthorToDtoResponse(updateAuthor);
+            AuthorModel updateAuthor = authorRepository.update(AuthorMapper.INSTANCE.authorFromDtoRequest(updateRequest));
+            return AuthorMapper.INSTANCE.authorToDtoResponse(updateAuthor);
         }
         throw new NotFoundException(
                 String.format(ErrorCode.NOT_FOUND_DATA.getMessage(), Constants.AUTHOR, updateRequest.getId()));

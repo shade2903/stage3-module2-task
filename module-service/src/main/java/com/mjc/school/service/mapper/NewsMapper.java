@@ -14,8 +14,8 @@ public interface NewsMapper {
 
     @Mappings(value = {@Mapping(target = "createDate", ignore = true),
             @Mapping(target = "lastUpdateDate", ignore = true)})
-    NewsModel NewsFromDtoRequest(NewsDtoRequest request);
+    NewsModel newsFromDtoRequest(NewsDtoRequest request);
 
-    NewsDtoResponse NewsToDtoResponse(NewsModel model);
+    NewsDtoResponse newsToDtoResponse(NewsModel model);
 
 }

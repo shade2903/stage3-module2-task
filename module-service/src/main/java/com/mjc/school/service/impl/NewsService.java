@@ -34,7 +34,7 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
 
     @Override
     public List<NewsDtoResponse> readAll() {
-        return newsRepository.readAll().stream().map(NewsMapper.INSTANCE::NewsToDtoResponse).toList();
+        return newsRepository.readAll().stream().map(NewsMapper.INSTANCE::newsToDtoResponse).toList();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
     public NewsDtoResponse readById(Long id) {
         Optional<NewsModel> newsModel = newsRepository.readById(id);
         if (newsModel.isPresent()) {
-            return NewsMapper.INSTANCE.NewsToDtoResponse(newsModel.get());
+            return NewsMapper.INSTANCE.newsToDtoResponse(newsModel.get());
         }
         throw new NotFoundException(
                 String.format(ErrorCode.NOT_FOUND_DATA.getMessage(), Constants.AUTHOR, id));
@@ -52,8 +52,8 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
     @ValidateAuthorParam
     public NewsDtoResponse create(NewsDtoRequest createRequest) {
       if(authorRepository.existById(createRequest.getAuthorId())){
-          NewsModel newsModel = newsRepository.create(NewsMapper.INSTANCE.NewsFromDtoRequest(createRequest));
-          return NewsMapper.INSTANCE.NewsToDtoResponse(newsModel);
+          NewsModel newsModel = newsRepository.create(NewsMapper.INSTANCE.newsFromDtoRequest(createRequest));
+          return NewsMapper.INSTANCE.newsToDtoResponse(newsModel);
       }
         throw new NotFoundException(
                 String.format(ErrorCode.NOT_FOUND_DATA.getMessage(), Constants.AUTHOR, createRequest.getAuthorId()));
@@ -63,8 +63,8 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
     @ValidateNewsParam
     public NewsDtoResponse update(NewsDtoRequest updateRequest) {
         if(newsRepository.existById(updateRequest.getId())){
-            NewsModel newsModel = newsRepository.update(NewsMapper.INSTANCE.NewsFromDtoRequest(updateRequest));
-            return NewsMapper.INSTANCE.NewsToDtoResponse(newsModel);
+            NewsModel newsModel = newsRepository.update(NewsMapper.INSTANCE.newsFromDtoRequest(updateRequest));
+            return NewsMapper.INSTANCE.newsToDtoResponse(newsModel);
         }
         throw new NotFoundException(
                 String.format(ErrorCode.NOT_FOUND_DATA.getMessage(), Constants.NEWS_ID, updateRequest.getId()));
