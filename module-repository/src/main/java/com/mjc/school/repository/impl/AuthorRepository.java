@@ -47,11 +47,11 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     @Override
     public AuthorModel update(AuthorModel entity) {
         AuthorModel updatedAuthor = readById(entity.getId()).get();
-        if(updatedAuthor != null){
+        if (updatedAuthor != null) {
             updatedAuthor.setName(entity.getName());
             updatedAuthor.setLastUpdateDate(entity.getLastUpdateDate());
         }
-        return null;
+        return updatedAuthor;
     }
 
 
@@ -60,16 +60,13 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     public boolean deleteById(Long id) {
         List<AuthorModel> removeList = new ArrayList<>();
         AuthorModel author = readById(id).get();
-        if (author != null) {
-            removeList.add(author);
-            return dataSource.getAllNews().removeAll(removeList);
-        }
-        return false;
+        removeList.add(author);
+        return dataSource.getAllAuthors().removeAll(removeList);
     }
 
     @Override
     public boolean existById(Long id) {
         return dataSource.getAllAuthors()
-                .stream().allMatch(e -> Objects.equals(e.getId(),id));
+                .stream().anyMatch(e -> Objects.equals(e.getId(), id));
     }
 }

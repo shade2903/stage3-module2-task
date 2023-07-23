@@ -3,6 +3,7 @@ package com.mjc.school.service.dto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Component
 public class NewsDtoResponse {
@@ -78,5 +79,28 @@ public class NewsDtoResponse {
         this.authorId = authorId;
     }
 
+    @Override
+    public String toString() {
+        return "NewsDtoResponse{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createDate=" + createDate +
+                ", lastUpdateDate=" + lastUpdateDate +
+                ", authorId=" + authorId +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NewsDtoResponse that = (NewsDtoResponse) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(content, that.content) && Objects.equals(createDate, that.createDate) && Objects.equals(lastUpdateDate, that.lastUpdateDate) && Objects.equals(authorId, that.authorId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, content, createDate, lastUpdateDate, authorId);
+    }
 }

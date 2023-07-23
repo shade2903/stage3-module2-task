@@ -1,7 +1,8 @@
-package com.mjc.school.service;
+package com.mjc.school.controller;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @ComponentScan({
@@ -10,5 +11,6 @@ import org.springframework.context.annotation.Configuration;
         "com.mjc.school.service",
         "com.mjc.school.controller"
 })
+@EnableAspectJAutoProxy
 public class AppConfig {
 }

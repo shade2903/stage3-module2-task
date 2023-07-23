@@ -3,7 +3,7 @@ package com.mjc.school.service.constants;
 public class Constants {
     public static final Integer MIN_AUTHOR_NAME = 5;
 
-    public static final Integer MAX_AUTHOR_NAME = 5;
+    public static final Integer MAX_AUTHOR_NAME = 30;
     public static final Integer MIN_TITLE_LENGTH = 5;
     public static final Integer MAX_TITLE_LENGTH = 30;
     public static final Integer MIN_CONTENT_LENGTH = 5;

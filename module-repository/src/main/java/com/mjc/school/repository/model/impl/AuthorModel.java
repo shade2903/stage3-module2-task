@@ -72,4 +72,13 @@ public class AuthorModel implements BaseEntity<Long> {
         return Objects.hash(id, name, createDate, lastUpdateDate);
     }
 
+    @Override
+    public String toString() {
+        return "AuthorModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createDate=" + createDate +
+                ", lastUpdateDate=" + lastUpdateDate +
+                '}';
+    }
 }
