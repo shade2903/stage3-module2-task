@@ -1,11 +1,8 @@
-package com.mjc.school.controller.command.represinatation;
+package com.mjc.school.controller.represinatation;
 
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.command.Invoker;
-import com.mjc.school.controller.command.impl.ReadAllAuthorsCommand;
-import com.mjc.school.controller.command.impl.ReadAllNewsCommand;
-import com.mjc.school.controller.command.impl.ReadAuthorByIdCommand;
-import com.mjc.school.controller.command.impl.ReadNewsByIdCommand;
+import com.mjc.school.controller.command.impl.*;
 import com.mjc.school.controller.constants.MenuConstants;
 import com.mjc.school.service.dto.AuthorDtoRequest;
 import com.mjc.school.service.dto.AuthorDtoResponse;
@@ -43,6 +40,12 @@ public class Menu {
                     case "2" -> invoker.setCommand(new ReadAllAuthorsCommand(authorController));
                     case "3" -> invoker.setCommand(new ReadNewsByIdCommand(newsController, input));
                     case "4" -> invoker.setCommand(new ReadAuthorByIdCommand(authorController, input));
+                    case "5" -> invoker.setCommand(new CreateNewsCommand(newsController, input));
+                    case "6" -> invoker.setCommand(new CreateAuthorCommand(authorController, input));
+                    case "7" -> invoker.setCommand(new UpdateNewsCommand(newsController, input));
+                    case "8" -> invoker.setCommand(new UpdateAuthorCommand(authorController, input));
+                    case "9" -> invoker.setCommand(new DeleteNewsByIdCommand(newsController, input));
+                    case "10" -> invoker.setCommand(new DeleteAuthorByIdCommand(authorController, input));
                     case "0" -> exitProgram();
                     default ->  System.out.println(MenuConstants.OPERATION_ERROR);
                 }

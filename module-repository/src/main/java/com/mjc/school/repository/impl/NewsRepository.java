@@ -52,7 +52,7 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
         if (updatedNews != null) {
             updatedNews.setTitle(entity.getTitle());
             updatedNews.setContent(entity.getContent());
-            updatedNews.setLastUpdateDate(entity.getLastUpdateDate());
+            updatedNews.setLastUpdateDate(LocalDateTime.now());
             updatedNews.setAuthorId(entity.getAuthorId());
             return updatedNews;
         }

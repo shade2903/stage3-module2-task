@@ -3,6 +3,7 @@ package com.mjc.school.service.dto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Component
@@ -81,12 +82,13 @@ public class NewsDtoResponse {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
         return "NewsDtoResponse{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", createDate=" + createDate +
-                ", lastUpdateDate=" + lastUpdateDate +
+                ", createDate=" + formatter.format(createDate) +
+                ", lastUpdateDate=" + formatter.format(lastUpdateDate) +
                 ", authorId=" + authorId +
                 '}';
     }

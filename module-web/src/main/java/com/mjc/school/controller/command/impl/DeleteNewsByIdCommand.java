@@ -9,11 +9,11 @@ import com.mjc.school.service.dto.NewsDtoResponse;
 
 import java.util.Scanner;
 
-public class ReadNewsByIdCommand implements Command {
+public class DeleteNewsByIdCommand implements Command {
     private final BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller;
     private final Scanner input;
 
-    public ReadNewsByIdCommand(BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller, Scanner input) {
+    public DeleteNewsByIdCommand(BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller, Scanner input) {
         this.controller = controller;
         this.input = input;
     }
@@ -21,6 +21,6 @@ public class ReadNewsByIdCommand implements Command {
     @Override
     public void execute() {
         System.out.println(MenuConstants.ENTER_ID);
-        System.out.println(controller.readById(Utils.inputLongNumber(input)));
+        System.out.println(controller.deleteById(Utils.inputLongNumber(input)));
     }
 }

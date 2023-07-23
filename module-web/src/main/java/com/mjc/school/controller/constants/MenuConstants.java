@@ -27,7 +27,7 @@ public class MenuConstants {
     public static final String ENTER_TITLE = "Enter title:";
     public static final String ENTER_CONTENT = "Enter content:";
     public static final String ENTER_AUTHOR_ID = "Enter author id:";
-    public static final String ENTER_AUTHOR_NAME = "Enter author id:";
+    public static final String ENTER_AUTHOR_NAME = "Enter author name:";
 
     public static final String OPERATION_GET_ALL = "Operation: Get all %s.";
     public static final String OPERATION_GET_BY_ID = "Operation: Get %s by id.";

@@ -1,4 +1,4 @@
-package com.mjc.school.controller.command.utils;
+package com.mjc.school.controller.utils;
 
 import com.mjc.school.service.exception.ErrorCode;
 import com.mjc.school.service.exception.InvalidDataException;
