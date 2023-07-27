@@ -1,6 +1,7 @@
 package com.mjc.school.repository.source;
 
 
+import com.mjc.school.repository.constants.Constants;
 import com.mjc.school.repository.model.impl.AuthorModel;
 import com.mjc.school.repository.model.impl.NewsModel;
 import com.mjc.school.repository.utils.Utils;
@@ -15,10 +16,7 @@ import java.util.List;
 public class DataSource {
     private final List<AuthorModel> authorModels;
     private final List<NewsModel> newsModels;
-    private static final String PATH_AUTHOR = "authors";
-    private static final String PATH_CONTENT = "content";
-    private static final String PATH_NEWS = "news";
-    private static final int DATA_SOURCE_SIZE = 20;
+
 
     public DataSource() {
         this.authorModels = initAuthorModels();
@@ -27,9 +25,9 @@ public class DataSource {
 
     private List<AuthorModel> initAuthorModels() {
         List<AuthorModel> authors = new ArrayList<>();
-        List<String> authorsNames = Utils.readResourceFile(PATH_AUTHOR);
+        List<String> authorsNames = Utils.readResourceFile(Constants.PATH_AUTHOR);
         Long id = 1L;
-        for (int i = 0; i < DATA_SOURCE_SIZE; i++) {
+        for (int i = 0; i < Constants.DATA_SOURCE_SIZE; i++) {
             LocalDateTime initDate = Utils.getRandomDate();
             authors.add(new AuthorModel(id++
                     ,authorsNames.get(i),
@@ -41,10 +39,10 @@ public class DataSource {
 
     private List<NewsModel> initNewsModels() {
         List<NewsModel> newsList = new ArrayList<>();
-        List<String> news = Utils.readResourceFile(PATH_NEWS);
-        List<String> content = Utils.readResourceFile(PATH_CONTENT);
+        List<String> news = Utils.readResourceFile(Constants.PATH_NEWS);
+        List<String> content = Utils.readResourceFile(Constants.PATH_CONTENT);
         Long id = 1L;
-        for (int i = 0; i < DATA_SOURCE_SIZE; i++) {
+        for (int i = 0; i <Constants.DATA_SOURCE_SIZE; i++) {
             LocalDateTime initDate = Utils.getRandomDate();
             newsList.add(
                     new NewsModel(id++,
