@@ -49,7 +49,6 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
         AuthorModel updatedAuthor = readById(entity.getId()).get();
         if (updatedAuthor != null) {
             updatedAuthor.setName(entity.getName());
-            updatedAuthor.setLastUpdateDate(entity.getLastUpdateDate());
             updatedAuthor.setLastUpdateDate(LocalDateTime.now());
         }
         return updatedAuthor;

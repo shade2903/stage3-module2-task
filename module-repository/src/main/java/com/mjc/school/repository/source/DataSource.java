@@ -27,11 +27,14 @@ public class DataSource {
 
     private List<AuthorModel> initAuthorModels() {
         List<AuthorModel> authors = new ArrayList<>();
+        List<String> authorsNames = Utils.readResourceFile(PATH_AUTHOR);
         Long id = 1L;
-        for (String s : Utils.readResourceFile(PATH_AUTHOR)) {
+        for (int i = 0; i < DATA_SOURCE_SIZE; i++) {
             LocalDateTime initDate = Utils.getRandomDate();
-            authors.add(new AuthorModel(id,s,initDate,initDate));
-            id++;
+            authors.add(new AuthorModel(id++
+                    ,authorsNames.get(i),
+                    initDate,
+                    initDate));
         }
         return authors;
     }
