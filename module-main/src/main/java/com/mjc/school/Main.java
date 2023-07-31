@@ -1,7 +1,7 @@
 package com.mjc.school;
 
 import com.mjc.school.config.AppConfig;
-import com.mjc.school.controller.represinatation.Menu;
+import com.mjc.school.controller.view.Menu;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

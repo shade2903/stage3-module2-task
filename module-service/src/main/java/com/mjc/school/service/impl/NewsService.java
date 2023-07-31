@@ -49,7 +49,7 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
     }
 
     @Override
-    @ValidateAuthorParam
+    @ValidateNewsParam
     public NewsDtoResponse create(NewsDtoRequest createRequest) {
       if(authorRepository.existById(createRequest.getAuthorId())){
           NewsModel newsModel = newsRepository.create(NewsMapper.INSTANCE.newsFromDtoRequest(createRequest));

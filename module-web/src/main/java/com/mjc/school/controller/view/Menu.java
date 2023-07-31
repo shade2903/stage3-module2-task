@@ -1,4 +1,4 @@
-package com.mjc.school.controller.represinatation;
+package com.mjc.school.controller.view;
 
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.command.Invoker;
