@@ -1,6 +1,9 @@
 package com.mjc.school.controller.impl;
 
 import com.mjc.school.controller.BaseController;
+import com.mjc.school.controller.annotation.CommandBody;
+import com.mjc.school.controller.annotation.CommandHandler;
+import com.mjc.school.controller.annotation.CommandParam;
 import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDtoRequest;
 import com.mjc.school.service.dto.NewsDtoResponse;
@@ -20,27 +23,32 @@ public class NewsController implements BaseController<NewsDtoRequest, NewsDtoRes
     }
 
     @Override
+    @CommandHandler(operation = 1)
     public List<NewsDtoResponse> readAll() {
         return  newsService.readAll();
     }
 
     @Override
-    public NewsDtoResponse readById(Long id) {
+    @CommandHandler(operation = 2)
+    public NewsDtoResponse readById(@CommandParam(name = "id") Long id) {
         return newsService.readById(id);
     }
 
     @Override
-    public NewsDtoResponse create(NewsDtoRequest createRequest) {
+    @CommandHandler(operation = 3)
+    public NewsDtoResponse create(@CommandBody NewsDtoRequest createRequest) {
         return newsService.create(createRequest);
     }
 
     @Override
-    public NewsDtoResponse update(NewsDtoRequest updateRequest) {
+    @CommandHandler(operation = 4)
+    public NewsDtoResponse update(@CommandBody NewsDtoRequest updateRequest) {
         return newsService.update(updateRequest);
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    @CommandHandler(operation = 5)
+    public boolean deleteById(@CommandParam(name = "id") Long id) {
         return newsService.deleteById(id);
     }
 }
